@@ -1,14 +1,13 @@
+package com.iticbcn;
 import java.sql.*;
 
 public class MostrarTaulesDB {
     public static void main(String[] args) {
 
-        // URL de conexión con el formato correcto
-        String url = "jdbc:mariadb://localhost:3306/LigaFutbol";
-        String usuari = "user"; // Sustituye por tu usuario
-        String contrasenya = "123"; // Sustituye por tu contraseña
+        String url = "jdbc:mariadb://localhost:3306/ligafutbol";
+        String usuari = "root";
+        String contrasenya = "123";
 
-        // Cargar el controlador JDBC de MariaDB
         try {
             Class.forName("org.mariadb.jdbc.Driver");
         } catch (ClassNotFoundException e) {
@@ -16,21 +15,28 @@ public class MostrarTaulesDB {
             return;
         }
 
-        // Usamos try-with-resources para gestionar la conexión
         try (Connection conn = DriverManager.getConnection(url, usuari, contrasenya)) {
             System.out.println("Connexió establerta correctament!");
 
-            // Crear l'Statement
             try (Statement stmt = conn.createStatement()) {
 
-                // Executar la consulta
                 String query = "SHOW TABLES;";
                 try (ResultSet rs = stmt.executeQuery(query)) {
 
-                    // Mostrar el resultat
-                    System.out.println("Taules a la base de dades:");
-                    while (rs.next()) {
-                        System.out.println(rs.getString(1)); // Primera columna: nom de la taula
+                    System.out.println("Que vols fer?");
+                    System.out.println("1. Mostrar taules de la base de dades");
+                    System.out.println("2. Fer un insert a la taula 'jugador'");
+                    System.out.println("3. Sortir");
+                    int resp = Integer.parseInt(Entrada.readLine());
+                    switch (resp) {
+                        case 1:
+                            Utils.mostrarJugadores(conn, resp, resp);
+                            break;
+                        case 2:
+
+                        
+                        default:
+                            break;
                     }
                 }
             }

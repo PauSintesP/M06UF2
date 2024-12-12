@@ -1,3 +1,4 @@
+package com.iticbcn;
 public class Classificacio {
     private int idClassificacio;
     private int idEquip;

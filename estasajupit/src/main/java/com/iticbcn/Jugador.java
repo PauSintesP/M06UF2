@@ -1,3 +1,4 @@
+package com.iticbcn;
 public class Jugador {
     private int idJugador;
     private String nom;

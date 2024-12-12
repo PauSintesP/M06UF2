@@ -1,3 +1,5 @@
+package com.iticbcn;
+
 public class Partit {
     private int idPartit;
     private String dataPartit;

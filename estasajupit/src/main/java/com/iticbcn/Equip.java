@@ -1,3 +1,4 @@
+package com.iticbcn;
 import java.util.List;
 
 public class Equip {
